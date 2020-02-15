@@ -1,19 +1,56 @@
 {
-  "extends": ["airbnb", "prettier", "plugin:node/recommended"],
-  "plugins": ["prettier"],
+  "extends": [
+    "airbnb",
+    "prettier",
+    "plugin:node/recommended"
+  ],
+  "plugins": [
+    "prettier"
+  ],
   "rules": {
     "prettier/prettier": "error",
-    "spaced-comment": "off",
-    "no-console": "warn",
-    "consistent-return": "off",
-    "func-names": "off",
-    "object-shorthand": "off",
-    "no-process-exit": "off",
-    "no-param-reassign": "off",
     "no-return-await": "off",
+    "no-cond-assign": 0,
+    "max-len": 0,
+    "linebreak-style": 0,
+    "one-var": [
+      0,
+      "always"
+    ],
+    "func-names": [
+      "error",
+      "never"
+    ],
+    "indent": [
+      "error",
+      2,
+      {
+        "VariableDeclarator": {
+          "var": 2,
+          "let": 2,
+          "const": 3
+        }
+      }
+    ],
+    "keyword-spacing": 0,
+    "no-use-before-define": 0,
     "no-underscore-dangle": "off",
-    "class-methods-use-this": "off",
-    "prefer-destructuring": ["error", { "object": true, "array": false }],
-    "no-unused-vars": ["error", { "argsIgnorePattern": "req|res|next|val" }]
+    "one-var-declaration-per-line": 0,
+    "prefer-destructuring": [
+      "error",
+      {
+        "object": true,
+        "array": false
+      }
+    ],
+    "no-unused-vars": [
+      "error",
+      {
+        "argsIgnorePattern": "req|res|next|val"
+      }
+    ]
+  },
+  "env": {
+    "browser": true
   }
 }
