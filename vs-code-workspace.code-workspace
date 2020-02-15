@@ -1,0 +1,28 @@
+{
+  "folders": [
+	{
+		"path": "."
+	}
+],
+  "settings": {
+    "editor.minimap.enabled": true,
+    "workbench.statusBar.visible": true,
+    "workbench.activityBar.visible": true,
+    "editor.formatOnSave": false,
+    "workbench.colorCustomizations": {
+      "statusBar.background": "#6d0d55",
+      "statusBar.noFolderBackground": "#4b1552",
+      "statusBar.debuggingBackground": "#0d2f3d",
+      "activityBar.background": "#2b133a",
+      "titleBar.activeBackground": "#7a3c70",
+      "titleBar.activeForeground": "#eff5f3"
+    },
+    "editor.fontSize": 15,
+    "css.validate": false,
+    "scss.validate": false,
+    "less.validate": false,
+    "editor.wordWrap": "on",
+    "editor.tabSize": 2,
+    "scssFormatter.singleQuote": true,
+  }
+}
