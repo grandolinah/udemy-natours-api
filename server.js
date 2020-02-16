@@ -1,5 +1,24 @@
+/* eslint-disable no-process-exit */
 const dotend = require('dotenv');
 const mongoose = require('mongoose');
+
+process.on('unhandledRejection', err => {
+  console.log(err.name, err.message);
+  console.log('💥Unhandled rejection. Shutting down.. 💥');
+
+  server.close(() => {
+    process.exit(1);
+  });
+});
+
+process.on('uncaughtException', err => {
+  console.log('💥Unhandled exception. Shutting down.. 💥');
+  console.log(err.name, err.message);
+
+  server.close(() => {
+    process.exit(1);
+  });
+});
 
 dotend.config({ path: './config.env' });
 
@@ -24,6 +43,6 @@ mongoose
 const port = process.env.PORT || 8000;
 
 // START SERVER
-app.listen(port, () => {
+const server = app.listen(port, () => {
   console.log(`App running on port ${port}...`);
 });
