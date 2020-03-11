@@ -1,9 +1,9 @@
 const fs = require('fs');
-const dotend = require('dotenv');
+const dotenv = require('dotenv');
 const mongoose = require('mongoose');
 const Tour = require('./../../models/tourModel');
 
-dotend.config({ path: './config.env' });
+dotenv.config({ path: './config.env' });
 
 const DB = process.env.DATABASE.replace(
   '<password>',
@@ -16,14 +16,10 @@ mongoose
     useCreateIndex: true,
     useFindAndModify: false
   })
-  .then(() => {
-    console.log('db connected succesful.');
-  });
+  .then(() => console.log('db connected succesful.'));
 
 // READ JSON FILE
-const tours = JSON.parse(
-  fs.readFileSync(`${__dirname}/tours-simple.json`, 'utf-8')
-);
+const tours = JSON.parse(fs.readFileSync(`${__dirname}/tours.json`, 'utf-8'));
 
 // IMPORT DATA IN DB
 const importData = async () => {
@@ -40,8 +36,6 @@ const deleteData = async () => {
   try {
     await Tour.deleteMany();
     console.log('Data sucessfully deleted');
-    // eslint-disable-next-line no-process-exit
-    process.exit();
   } catch (err) {
     console.log(err);
   }
@@ -53,6 +47,4 @@ if (process.argv[2] === '--import') {
   importData();
 } else if (process.argv[2] === '--delete') {
   deleteData();
-  // eslint-disable-next-line no-process-exit
-  process.exit();
 }
