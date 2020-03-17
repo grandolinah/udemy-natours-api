@@ -4,7 +4,7 @@ const sendEmail = async options => {
   // 1. create a transporter
   const transporter = nodemailer.createTransport({
     // service: 'Gmail',
-    // TODO activate in gmail "less secure app" option
+    // activate in gmail "less secure app" option
     host: process.env.EMAIL_HOST,
     port: process.env.EMAIL_PORT,
     auth: {

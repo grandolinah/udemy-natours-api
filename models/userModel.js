@@ -48,6 +48,7 @@ const userSchema = new mongoose.Schema({
   }
 });
 
+// TODO if you import data comment out
 userSchema.pre('save', async function(next) {
   // Only run this function if password was actually modified
   if (!this.isModified('password')) return next();
@@ -61,6 +62,7 @@ userSchema.pre('save', async function(next) {
   return next();
 });
 
+// TODO if you import data comment out
 userSchema.pre('save', function(next) {
   if (!this.isModified('password') || this.isNew) return next();
 
