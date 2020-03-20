@@ -8,6 +8,7 @@ node .\dev-data\data\import-dev-data.js --import
 
 **start in development**
 npm run start:dev
+npm run watch:js
 
 **start in debug**
 npm run debug
