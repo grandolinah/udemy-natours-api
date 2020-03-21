@@ -8,6 +8,7 @@
     "prettier"
   ],
   "rules": {
+    "semi": "error",
     "prettier/prettier": "error",
     "no-return-await": "off",
     "no-cond-assign": 0,
