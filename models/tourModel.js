@@ -100,7 +100,8 @@ const tourSchema = new mongoose.Schema(
         },
         coordinates: [Number],
         address: String,
-        description: String
+        description: String,
+        day: Number
       }
     ],
     // // embedding
