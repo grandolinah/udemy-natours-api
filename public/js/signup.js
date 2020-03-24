@@ -19,7 +19,7 @@ export const signup = async (name, email, password, passwordConfirm) => {
        showAlert('success', 'You created account successfully.');
 
        window.setTimeout(() => {
-         location.assign('/');
+         location.assign('/login');
        }, 1500);
      }
    } catch (err) {
