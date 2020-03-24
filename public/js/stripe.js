@@ -8,8 +8,8 @@ export const bookTour = async tourId => {
   try {
     // get the session from the server
     const session = await axios(
-      // TODO dev `http://localhost:8000/api/v1/bookings/checkout-session/${tourId}`
-      `/api/v1/bookings/checkout-session/${tourId}`
+      `http://localhost:8000/api/v1/bookings/checkout-session/${tourId}`
+      // TODO dev/prod `/api/v1/bookings/checkout-session/${tourId}`
     );
 
     // console.log(session);
