@@ -1,6 +1,7 @@
 /*eslint-disable*/
 import '@babel/polyfill';
 import { login, logout } from './login';
+import { signup} from './signup';
 import { displayMap } from './mapbox';
 import { updateSettings } from './updateSettings';
 import { bookTour } from './stripe';
@@ -8,6 +9,7 @@ import { bookTour } from './stripe';
 // DOM ELEMENTS
 const mapBox = document.getElementById('map');
 const loginForm = document.querySelector('.form--login');
+const signupForm = document.querySelector('.form--signup');
 const dataUpdateForm = document.querySelector('.form-user-data');
 const passwordUpdateForm = document.querySelector('.form-user-password');
 const logOutBtn = document.querySelector('.nav__el--logout');
@@ -28,6 +30,19 @@ if (loginForm) {
     const password = document.getElementById('password').value;
 
     login(email, password);
+  });
+}
+
+if (signupForm) {
+  signupForm.addEventListener('submit', e => {
+    e.preventDefault();
+
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+    const passwordConfirm = document.getElementById('password-confirm').value;
+    console.log(name, email, password, passwordConfirm);
+    signup(name, email, password, passwordConfirm);
   });
 }
 
