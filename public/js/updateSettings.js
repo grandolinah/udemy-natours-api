@@ -3,7 +3,7 @@ import axios from 'axios';
 import { showAlert } from './alert';
 
 export const updateSettings = async (data, type) => {
-  // TODO dev
+  // TODO localhost
   // const url =
   // type === 'password'
   //   ? 'http://localhost:8000/api/v1/users/updateMyPassword'

@@ -7,10 +7,7 @@ const stripe = Stripe('pk_test_gwAYLO0F0tRO71NdjR4tKnAy00tXhBkK1S');
 export const bookTour = async tourId => {
   try {
     // get the session from the server
-    const session = await axios(
-      `http://localhost:8000/api/v1/bookings/checkout-session/${tourId}`
-      // TODO dev/prod `/api/v1/bookings/checkout-session/${tourId}`
-    );
+    const session = await axios(`/api/v1/bookings/checkout-session/${tourId}`);
 
     // console.log(session);
 

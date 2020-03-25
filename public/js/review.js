@@ -8,7 +8,8 @@ export const createReview = async (tourSlug, review, rating, user) => {
   try {
     tourId = await axios({
       method: 'GET',
-      url: `http://localhost:8000/api/v1/tours/?slug=${tourSlug}`
+      // TODO localhost url: `http://localhost:8000/api/v1/tours/?slug=${tourSlug}`
+      url: `/api/v1/tours/?slug=${tourSlug}`
     });
   } catch (err) {
     showAlert('error', err.response.data.message);
@@ -19,7 +20,8 @@ export const createReview = async (tourSlug, review, rating, user) => {
   try {
     currentReviews = await axios({
       method: 'GET',
-      url: `http://localhost:8000/api/v1/tours/${tourId}/reviews?user=${user}`
+      // TODO localhost url: `http://localhost:8000/api/v1/tours/${tourId}/reviews?user=${user}`
+      url: `/api/v1/tours/${tourId}/reviews?user=${user}`
     });
   } catch (err) {
     showAlert('error', err.response.data.message);
@@ -29,7 +31,8 @@ export const createReview = async (tourSlug, review, rating, user) => {
     try {
       const res = await axios({
         method: 'POST',
-        url: `http://localhost:8000/api/v1/tours/${tourId}/reviews`,
+        // TODO localhost url: `http://localhost:8000/api/v1/tours/${tourId}/reviews`,
+        url: `/api/v1/tours/${tourId}/reviews`,
         data: {
           review,
           rating
@@ -53,7 +56,8 @@ export const deleteReview = async reviewId => {
   try {
     currentReviews = await axios({
       method: 'DELETE',
-      url: `http://localhost:8000/api/v1/reviews/${reviewId}`
+      // TODO localhost url: `http://localhost:8000/api/v1/reviews/${reviewId}`
+      url: `/api/v1/reviews/${reviewId}`
     });
 
     if (res.data.status === 'success') {
@@ -77,7 +81,8 @@ export const updateReview = async (review, reviewText, rating, user) => {
   try {
     const res = await axios({
       method: 'PATCH',
-      url: `http://localhost:8000/api/v1/reviews/${review}`,
+      // TODO localhost url: `http://localhost:8000/api/v1/reviews/${review}`,
+      url: `/api/v1/reviews/${review}`,
       data
     });
 

@@ -114,9 +114,7 @@ if (reviewBtn) {
 if (deleteReviewBtns) {
   deleteReviewBtns.forEach(btn => {
     btn.addEventListener('click', e => {
-      console.log('clicked');
       const { reviewId } = e.target.dataset;
-      console.log(reviewId);
 
       deleteReview(reviewId);
     });
@@ -129,9 +127,8 @@ if (updateReviewBtn) {
 
     const reviewText = document.getElementById('review').value;
     const rating = document.getElementById('rating').value;
-    console.log(e.target.dataset);
     const { user, review } = e.target.dataset;
-  
+
     updateReview(review, reviewText, rating, user);
-  })
+  });
 }
