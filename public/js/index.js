@@ -124,17 +124,15 @@ if (deleteReviewBtns) {
   });
 }
 
-if (updateReviewBtns) {
-  updateReviewBtns.forEach(btn => {
-    btn.addEventListener('click', e => {
-      e.preventDefault();
+if (updateReviewBtn) {
+  updateReviewBtn.addEventListener('click', e => {
+    e.preventDefault();
 
-      const reviewText = document.getElementById('review').value;
-      const rating = document.getElementById('rating').value;
-      console.log(e.target.dataset);
-      const { user, review } = e.target.dataset;
-
-      updateReview(review, reviewText, rating, user);
-    });
-  });
+    const reviewText = document.getElementById('review').value;
+    const rating = document.getElementById('rating').value;
+    console.log(e.target.dataset);
+    const { user, review } = e.target.dataset;
+  
+    updateReview(review, reviewText, rating, user);
+  })
 }
