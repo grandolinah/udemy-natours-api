@@ -3,10 +3,17 @@ import axios from 'axios';
 import { showAlert } from './alert';
 
 export const updateSettings = async (data, type) => {
+  // TODO dev
+  // const url =
+  // type === 'password'
+  //   ? 'http://localhost:8000/api/v1/users/updateMyPassword'
+  //   : 'http://localhost:8000/api/v1/users/updateMe';
+
   const url =
     type === 'password'
-      ? 'http://localhost:8000/api/v1/users/updateMyPassword'
-      : 'http://localhost:8000/api/v1/users/updateMe';
+      ? '/api/v1/users/updateMyPassword'
+      : '/api/v1/users/updateMe';
+
   try {
     const res = await axios({
       method: 'PATCH',
