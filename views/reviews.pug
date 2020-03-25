@@ -1,0 +1,35 @@
+extends base
+
+include _mixins
+
+block content
+  main.main
+    .user-view
+      nav.user-view__menu
+        ul.side-nav
+          +navItem('/me', 'Settings', 'settings')
+          +navItem('/my-tours', 'My Bookings', 'briefcase')
+          +navItem('/my-reviews', 'My reviews', true,'star')
+          +navItem('/my-billing', 'Billing', 'credit-card')
+        - if(user.role === 'admin')
+          .admin-nav
+            h5.admin-nav__heading Admin
+            ul.side-nav
+              +navItem('#', 'Manage tours', 'map')
+              +navItem('#', 'Manage users', 'users')
+              +navItem('#', 'Manage reviews', 'star')
+              +navItem('#', 'Manage Bookings', 'briefcase')
+      .user-view__content
+        if reviews.length > 0
+          each review, i in reviews
+            .review
+              h3.heading-secondary= tours[i].name
+              |
+              p=`Review: ${review.review}`
+              |
+              p=`Review rating: ${review.rating}`
+              |
+              a.update-review.btn.btn--green(href= `/tour/${tours[i].slug}/reviews/update` data-review-id=`${review.id}` data-review=`${review.review}` data-rating=`${review.rating}`) Update
+              a.delete-review.btn.btn--red(href= `/tour/${review.id}/reviews/delete` data-review-id=`${review.id}`) Delete
+        else
+          h3 No reviews left yet.

@@ -1,6 +1,7 @@
 const Tour = require('../models/tourModel');
 const User = require('../models/userModel');
 const Booking = require('../models/bookingModel');
+const Review = require('../models/reviewModel');
 const catchAsync = require('./../utils/catchAsync');
 const AppError = require('./../utils/appError');
 
@@ -41,6 +42,59 @@ exports.getLoginForm = catchAsync(async (req, res, next) => {
   });
 });
 
+exports.getSignupForm = catchAsync(async (req, res, next) => {
+  res.status(200).render('signup', {
+    title: 'Create account'
+  });
+});
+
+exports.getCreateReviewForm = catchAsync(async (req, res, next) => {
+  res.status(200).render('createReview', {
+    title: 'Leave review',
+    user: req.user
+  });
+});
+
+exports.getUpdateReviewForm = catchAsync(async (req, res, next) => {
+  const { slugId } = req.params.slug;
+  const review = await Review.find({ user: req.user.id, slug: slugId });
+
+  res.status(200).render('updateReview', {
+    title: 'Update review',
+    user: req.user,
+    review: review[0]
+  });
+});
+
+exports.getDeleteReviewForm = catchAsync(async (req, res, next) => {
+  res.status(200).render('deleteReview', {
+    title: 'Delete review',
+    user: req.user
+  });
+});
+
+exports.getMyReviews = catchAsync(async (req, res, next) => {
+  // find all reviews
+  const reviews = await Review.find({ user: req.user.id });
+
+  // find all tours with the returned ids
+  const tourIds = reviews.map(el => el.tour);
+  const tours = await Tour.find({ _id: { $in: tourIds } });
+
+  res.status(200).render('reviews', {
+    title: 'My reviews',
+    reviews,
+    tours
+  });
+});
+
+exports.getBilling = catchAsync(async (req, res, next) => {
+  res.status(200).render('billing', {
+    title: 'My billing',
+    user: req.user
+  });
+});
+
 exports.getAccount = (req, res) => {
   res.status(200).render('account', {
     title: 'My account'
@@ -50,15 +104,15 @@ exports.getAccount = (req, res) => {
 exports.getMyTours = catchAsync(async (req, res, next) => {
   // find all bookings
   const bookings = await Booking.find({ user: req.user.id });
-  console.log(bookings);
+
   // find all tours with the returned ids
   const tourIds = bookings.map(el => el.tour);
-  console.log(tourIds);
   const tours = await Tour.find({ _id: { $in: tourIds } });
 
-  res.status(200).render('overview', {
+  res.status(200).render('bookings', {
     title: 'My tours',
-    tours
+    tours,
+    bookings
   });
 });
 

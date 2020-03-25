@@ -1,0 +1,9 @@
+extends base
+
+block content
+  main.main
+    .review-form
+      h2.heading-secondary.ma-bt-lg Delete a review
+
+      a#delete-review-btn.btn.btn.btn--red(href='/my-reviews' data-user=`${user.id}`) Delete review
+      a#delete-review-btn.btn.btn.btn--green(href='/my-reviews' data-user=`${user.id}`) Cancel
