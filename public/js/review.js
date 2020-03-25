@@ -49,6 +49,8 @@ export const createReview = async (tourSlug, review, rating, user) => {
     } catch (err) {
       showAlert('error', err.response.data.message);
     }
+  } else {
+    showAlert('error', 'You had review already.');
   }
 };
 
