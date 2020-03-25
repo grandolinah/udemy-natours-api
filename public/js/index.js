@@ -18,7 +18,6 @@ const bookBtn = document.querySelector('#book-tour');
 const reviewBtn = document.querySelector('#review-btn');
 const updateReviewBtn = document.querySelector('#update-review-btn');
 const deleteReviewBtns = document.querySelectorAll('.delete-review');
-const updateReviewBtns = document.querySelectorAll('.update-review');
 
 if (mapBox) {
   let { locations } = mapBox.dataset;
